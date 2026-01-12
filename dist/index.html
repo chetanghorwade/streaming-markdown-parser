@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Streaming Markdown Parser</title>
+  </head>
+
+  <body>
+    <h2>Streaming Markdown Output</h2>
+
+    <div id="markdownContainer"></div>
+
+    <script>
+      const blogpostMarkdown = `# control
+
+Inline example: \`print("hello world")\`
+
+\`\`\`js
+console.log("Hello from code block");
+\`\`\`
+`;
+    </script>
+
+    <script src="./MarkdownParser.js"></script>
+
+    <br /><br />
+    <button onclick="runStream()">STREAM</button>
+  </body>
+</html>
