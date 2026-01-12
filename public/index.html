@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Streaming Markdown Parser</title>
+  </head>
+
+  <body>
+    <h2>Streaming Markdown Output</h2>
+
+    <!-- Markdown will stream here -->
+    <div id="markdownContainer"></div>
+
+    <!-- Markdown source (GLOBAL VARIABLE) -->
+    <script>
+      const blogpostMarkdown = `# control
+
+*humans should focus on bigger problems*
+
+## Setup
+
+\`\`\`bash
+git clone git@github.com:anysphere/control
+\`\`\`
+
+\`\`\`bash
+./init.sh
+\`\`\`
+
+Inline example: \`print("hello world")\`
+
+Another code block:
+
+\`\`\`js
+console.log("Hello from code block");
+\`\`\`
+`;
+    </script>
+
+    <!-- Compiled TypeScript -->
+   <script src="../dist/MarkdownParser.js"></script>
+
+
+    <br /><br />
+    <button onclick="runStream()">STREAM</button>
+  </body>
+</html>
