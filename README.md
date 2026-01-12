@@ -1,91 +1,49 @@
-Streaming Markdown Parser
-Overview
 
-This project implements a streaming Markdown parser that processes Markdown text as it arrives in small chunks, similar to how large language models stream responses. The goal is to parse and render Markdown incrementally, without re-rendering the entire DOM.
+# TypeScript
 
-The implementation focuses on inline code and code blocks, which are the most important requirements of the task.
+[![GitHub Actions CI](https://github.com/microsoft/TypeScript/workflows/CI/badge.svg)](https://github.com/microsoft/TypeScript/actions?query=workflow%3ACI)
+[![Devops Build Status](https://dev.azure.com/typescript/TypeScript/_apis/build/status/Typescript/node10)](https://dev.azure.com/typescript/TypeScript/_build?definitionId=7)
+[![npm version](https://badge.fury.io/js/typescript.svg)](https://www.npmjs.com/package/typescript)
+[![Downloads](https://img.shields.io/npm/dm/typescript.svg)](https://www.npmjs.com/package/typescript)
 
-What I Implemented
-1. Streaming Parsing Logic
+[TypeScript](https://www.typescriptlang.org/) is a language for application-scale JavaScript. TypeScript adds optional types to JavaScript that support tools for large-scale JavaScript applications for any browser, for any host, on any OS. TypeScript compiles to readable, standards-based JavaScript. Try it out at the [playground](https://www.typescriptlang.org/play/), and stay up to date via [our blog](https://blogs.msdn.microsoft.com/typescript) and [Twitter account](https://twitter.com/typescript).
 
-Markdown text is split into randomly sized tokens to simulate real-time streaming.
+Find others who are using TypeScript at [our community page](https://www.typescriptlang.org/community/).
 
-Tokens are processed character by character.
+## Installing
 
-The parser immediately renders content as it arrives instead of waiting for the full input.
-
-2. State-Based Markdown Parsing
-
-A simple state machine is used to track the current parsing context:
-
-TEXT – Normal markdown text
-
-INLINE_CODE – Text wrapped in single backticks (`)
-
-CODE_BLOCK – Text wrapped in triple backticks (```)
-
-State transitions occur as soon as backticks are detected.
-
-3. Inline Code Support
-
-Single backticks start and end inline code.
-
-Inline code is rendered optimistically as soon as the opening backtick appears.
-
-Styled using a monospace font and background to visually distinguish it.
-
-Example:
-
-`print("hello world")`
-
-4. Code Block Support
-
-Triple backticks start and end code blocks.
-
-Code blocks are rendered inside <pre> elements.
-
-Supports cases where triple backticks are split across streamed tokens.
-
-Example:
-
-```js
-console.log("Hello");
-
-
----
-
-### 5. Optimistic Rendering
-- Rendering begins immediately when an inline code block or code block starts.
-- The parser does not wait for closing backticks before styling the content.
-- This mimics real streaming behavior seen in chat-based interfaces.
-
----
-
-### 6. Incremental DOM Updates
-- New text nodes and elements are **appended** to the DOM.
-- The entire container is never re-rendered.
-- This allows users to **select and copy text** while streaming is still in progress.
-
----
-
-## Technical Notes
-- Implemented using **TypeScript**.
-- No external libraries were used.
-- Parsing logic is intentionally simple and focused on correctness rather than performance.
-- Cross-platform build issues (Windows) were resolved to ensure proper compilation.
-
----
-
-## How to Run
+For the latest stable version:
 
 ```bash
-npm install
-npm run build
+npm install -g typescript
+```
 
+For our nightly builds:
 
-Open the following file in a browser:
+```bash
+npm install -g typescript@next
+```
 
-dist/index.html
+## Contribute
 
+There are many ways to [contribute](https://github.com/microsoft/TypeScript/blob/main/CONTRIBUTING.md) to TypeScript.
+* [Submit bugs](https://github.com/microsoft/TypeScript/issues) and help us verify fixes as they are checked in.
+* Review the [source code changes](https://github.com/microsoft/TypeScript/pulls).
+* Engage with other TypeScript users and developers on [StackOverflow](https://stackoverflow.com/questions/tagged/typescript).
+* Help each other in the [TypeScript Community Discord](https://discord.gg/typescript).
+* Join the [#typescript](https://twitter.com/search?q=%23TypeScript) discussion on Twitter.
+* [Contribute bug fixes](https://github.com/microsoft/TypeScript/blob/main/CONTRIBUTING.md).
 
-Click the STREAM button to see the Markdown rendered progressively.
+This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information see
+the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com)
+with any additional questions or comments.
+
+## Documentation
+
+*  [TypeScript in 5 minutes](https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes.html)
+*  [Programming handbook](https://www.typescriptlang.org/docs/handbook/intro.html)
+*  [Homepage](https://www.typescriptlang.org/)
+
+## Roadmap
+
+For details on our planned features and future direction please refer to our [roadmap](https://github.com/microsoft/TypeScript/wiki/Roadmap).
